@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--Text-->
+<h2 th:text="${name}"></h2>
+<h2 th:text="${numbers}"></h2>
+<h2 th:text="${dob}"></h2>
+<h2 th:text="${id}"></h2>
+<h2 th:text="${user1.firstName + ' ' + user1.getLastName()}"></h2>
+
+<!--Link-->
+<p>click <a th:href="@{/user/register}">  here </a> to register</p>
+<!--Link with parameter-->
+<a th:href="@{/user/welcome(id=${id})}">id</a>
+<!--Looping-->
+<ul>
+    <li th:each="number: ${numbers}" th:text="${number}"></li>
+</ul>
+
+</body>
+</html>
