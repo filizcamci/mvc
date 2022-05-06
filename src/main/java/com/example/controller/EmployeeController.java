@@ -26,11 +26,14 @@ public class EmployeeController {
     @PostMapping("/list")
     public String employeeList(@ModelAttribute("employee")Employee employee, Model model){
         model.addAttribute("employeeList", Arrays.asList(employee));
-        LocalDate dob = LocalDate.parse(employee.getBirthday());
-        System.out.println("DOB: " + dob);
-        int age = LocalDate.now().getYear() - dob.getYear();
-        model.addAttribute("age", age);
-        //employee.setAge(age);
+        System.out.println("employee.getBirthday().length(): " + employee.getBirthday().length());
+        if(employee.getBirthday() != null && employee.getBirthday().length() > 1) {
+            LocalDate dob = LocalDate.parse(employee.getBirthday());
+            System.out.println("DOB: " + dob);
+            int age = LocalDate.now().getYear() - dob.getYear();
+            model.addAttribute("age", age);
+        }
+
         return "employee/employee-list";
     }
 }
